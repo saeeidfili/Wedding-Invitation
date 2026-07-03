@@ -131,14 +131,14 @@ export const timelinePhotos: TimelinePhoto[] = [
 // Rendered via the <T id="..." /> helper (see T.tsx).
 // ============================================================
 
-export type PersianFont = 'nozha' | 'pinar'
+export type PersianFont = 'nozha' | 'pinar' | 'nastaliq'
 export type TextEntry = { text: string; font: PersianFont; size: number }
 
 export const texts = {
   // Hero
   'hero.tagline': { text: weddingData.heroTagline, font: 'pinar', size: 16 },
-  'hero.bride': { text: weddingData.bride, font: 'nozha', size: 80 },
-  'hero.groom': { text: weddingData.groom, font: 'nozha', size: 80 },
+  'hero.bride': { text: weddingData.bride, font: 'nastaliq', size: 80 },
+  'hero.groom': { text: weddingData.groom, font: 'nastaliq', size: 80 },
 
   // Timeline badge
   'badge.title': { text: 'برنامه مراسم عقد', font: 'nozha', size: 20 },

@@ -63,15 +63,13 @@ export function HeroV2() {
         </motion.p>
 
         {/* Photo — flush left, margins on top / right / bottom */}
-        <div className="hero2-image">
-          <img
-            src={heroImage.src}
-            alt="عروس و داماد"
-            style={{
-              transform: `scale(${heroImage.scale})`,
-              transformOrigin: `${heroImage.position.x}% ${heroImage.position.y}%`,
-            }}
-          />
+        <div
+          className="hero2-image"
+          style={{
+            backgroundImage: `url(${heroImage.src})`,
+            backgroundPosition: `${heroImage.position.x}% ${heroImage.position.y}%`,
+          }}
+        >
 
           {/* Raining petals — fall across the whole photo */}
           <div className="hero2-petals absolute inset-0 overflow-hidden pointer-events-none">

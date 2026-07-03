@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-// Two local Persian fonts. Edit per-text font/size in wedding-data.ts (`texts`).
+// Local Persian fonts. Edit per-text font/size in wedding-data.ts (`texts`).
 const nozha = localFont({
   src: "../../fonts/Digi Nozha Regular.ttf",
   variable: "--font-nozha",
@@ -13,6 +13,12 @@ const nozha = localFont({
 const pinar = localFont({
   src: "../../fonts/Pinar.ttf",
   variable: "--font-pinar",
+  display: "swap",
+});
+
+const nastaliq = localFont({
+  src: "../../fonts/IranNastaliq.ttf",
+  variable: "--font-nastaliq",
   display: "swap",
 });
 
@@ -40,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${nozha.variable} ${pinar.variable} antialiased bg-paper text-ink min-h-screen`}
+        className={`${nozha.variable} ${pinar.variable} ${nastaliq.variable} antialiased bg-paper text-ink min-h-screen`}
       >
         {children}
         <Toaster />

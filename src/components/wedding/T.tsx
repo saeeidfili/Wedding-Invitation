@@ -11,23 +11,26 @@ type TProps = {
 
 /**
  * Renders a Persian text from the central `texts` config (wedding-data.ts),
- * applying its assigned font ('nozha' | 'pinar') and size (px). Use `className`
- * for colour/weight/spacing — the font and size come from the config.
+ * applying its assigned font ('nozha' | 'pinar' | 'nastaliq') and size (px).
+ * Use `className` for colour/weight/spacing — the font and size come from the config.
  */
 export function T({ id, className, style }: TProps) {
   const t = texts[id]
-  const fontFamily = t.font === 'nozha' ? 'var(--font-nozha)' : 'var(--font-pinar)'
   return (
     <span
       className={className}
-      style={{ fontFamily, fontSize: `${t.size}px`, ...style }}
+      style={{ fontFamily: FONT_VAR[t.font], fontSize: `${t.size}px`, ...style }}
     >
       {t.text}
     </span>
   )
 }
 
-const FONT_VAR = { nozha: 'var(--font-nozha)', pinar: 'var(--font-pinar)' } as const
+const FONT_VAR = {
+  nozha: 'var(--font-nozha)',
+  pinar: 'var(--font-pinar)',
+  nastaliq: 'var(--font-nastaliq)',
+} as const
 
 /** Inline style ({ fontFamily, fontSize }) for a list-text key — apply to list items. */
 export function listTextStyle(key: keyof typeof listText): CSSProperties {
