@@ -247,8 +247,8 @@
   margin: 0;
 }
 .hero2-name-left {
-  left: 0;         /* مریم — top-left */
-  top: 50%;
+  left: 30;         /* مریم — top-left */
+  top: 60%;
   transform: translateY(-50%);
 }
 .hero2-name-center {
@@ -258,8 +258,8 @@
   top: 40%;
 }
 .hero2-name-right {
-  right: 10;        /* سعید — bottom-right */
-  bottom: 40%;
+  right: 30;        /* سعید — bottom-right */
+  bottom: 20%;
   transform: translateY(50%);
 }
 .hero2-amp {
