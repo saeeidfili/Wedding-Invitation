@@ -3,22 +3,16 @@
 import { motion } from 'framer-motion'
 import { timelinePhotos } from './wedding-data'
 import { InstantPhoto } from './InstantPhoto'
-import { Peony, Eucalyptus, BabyBreath } from './FloralDecorations'
+import { Flora } from './Flora'
+import { floraPlacements } from './flora-placements'
+import { T, listTextStyle } from './T'
 
 export function Timeline() {
   return (
-    <section className="relative py-20 md:py-32 px-4 paper-texture overflow-hidden">
+    <section className="relative py-20 md:py-32 px-4 bg-paper">
       {/* Section header */}
       <div className="text-center mb-16 md:mb-24 max-w-2xl mx-auto relative">
-        <motion.div
-          className="absolute -top-6 left-1/2 -translate-x-1/2 w-24 h-24 opacity-70 pointer-events-none"
-          initial={{ opacity: 0, scale: 0.7, rotate: -20 }}
-          whileInView={{ opacity: 0.7, scale: 1, rotate: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <Eucalyptus />
-        </motion.div>
+        <Flora placement={floraPlacements.timeline.header} />
         <motion.h2
           className="font-display text-4xl md:text-6xl text-ink mb-4"
           initial={{ opacity: 0, y: 30 }}
@@ -26,16 +20,16 @@ export function Timeline() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          داستانِ ما
+          <T id="timeline.heading" className="text-ink mb-4" />
         </motion.h2>
         <motion.p
-          className="font-body text-ink-soft text-base md:text-lg"
+          className="text-ink-soft"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          هفده قاب از خاطراتی که ما را به این روز رساند — یکی‌یکی ورق بزنید
+          <T id="timeline.subtitle" />
         </motion.p>
       </div>
 
@@ -61,7 +55,7 @@ export function Timeline() {
             <div key={photo.id}>
               {/* Milestone label */}
               {hasMilestone && (
-                <MilestoneMarker milestone={photo.milestone!} index={i} />
+                <MilestoneMarker milestone={photo.milestone!} />
               )}
 
               {/* Timeline row */}
@@ -109,14 +103,7 @@ export function Timeline() {
 }
 
 /* Milestone marker — appears between timeline photos with a floral accent */
-function MilestoneMarker({
-  milestone,
-  index,
-}: {
-  milestone: string
-  index: number
-}) {
-  const FloralIcon = index % 3 === 0 ? Peony : index % 3 === 1 ? BabyBreath : Peony
+function MilestoneMarker({ milestone }: { milestone: string }) {
   return (
     <motion.div
       className="relative flex justify-center my-8 md:my-12"
@@ -126,16 +113,11 @@ function MilestoneMarker({
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative inline-flex items-center gap-3 md:gap-5 px-8 py-4 rounded-full bg-paper/80 backdrop-blur-sm border border-rose/30 shadow-sm">
-        {/* Floral accent — left */}
-        <div className="absolute -right-2 -top-3 w-12 h-12 opacity-70 pointer-events-none rotate-12">
-          <FloralIcon />
-        </div>
-        {/* Floral accent — right */}
-        <div className="absolute -left-2 -bottom-3 w-12 h-12 opacity-60 pointer-events-none -rotate-12">
-          <Eucalyptus />
-        </div>
+        {/* Floral accents — edit in flora-placements.ts */}
+        <Flora placement={floraPlacements.timeline.milestoneA} />
+        <Flora placement={floraPlacements.timeline.milestoneB} />
         <span className="text-rose text-lg">✦</span>
-        <span className="font-display text-2xl md:text-3xl text-ink whitespace-nowrap">
+        <span className="text-ink whitespace-nowrap" style={listTextStyle('timeline.milestone')}>
           {milestone}
         </span>
         <span className="text-rose text-lg">✦</span>

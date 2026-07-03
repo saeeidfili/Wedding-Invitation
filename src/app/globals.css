@@ -14,9 +14,10 @@
   --color-ink: #4A3F3A;
   --color-ink-soft: #7A6B64;
 
-  /* Fonts */
-  --font-vazir: var(--font-vazirmatn);
-  --font-lalezar: var(--font-lalezar);
+  /* Fonts — mapped to the two local Persian fonts (see layout.tsx).
+     --font-vazir (body utility) → Pinar ; --font-lalezar (display utility) → Nozha. */
+  --font-vazir: var(--font-pinar);
+  --font-lalezar: var(--font-nozha);
 
   /* shadcn tokens (kept for compatibility) */
   --color-background: var(--paper);
@@ -46,6 +47,9 @@
 
 :root {
   --radius: 0.625rem;
+  /* Single font reference for the HeroV2 "&" separator — change this one line
+     to re-font the ampersand without touching anything else. */
+  --font-hero2-amp: var(--font-lalezar);
 }
 
 @layer base {
@@ -149,5 +153,153 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   HeroV2 — hero.html-inspired hero
+   Flush-left photo (margins top/right/bottom) + scaled monogram.
+   ============================================================ */
+.hero2-card {
+  padding: 4vh 12vw 4vh 6vw;
+}
+
+.hero2-title {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  margin-bottom: 2.5vh;
+}
+
+/* Photo wrapper: bleeds to the left viewport edge
+   (negative margin cancels the card's left padding),
+   while keeping the right / top / bottom insets. */
+.hero2-image {
+  position: relative;
+  flex: 1;
+  min-height: 40vh;
+  overflow: hidden;
+  background-color: var(--color-sage);
+  margin-left: -6vw;
+  width: calc(100% + 6vw);
+  container-type: inline-size;
+}
+
+.hero2-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+/* Monogram: same left:10%/top:70% placement as hero.html.
+   Every size is in cqw so the whole monogram scales with the photo
+   width (150px ≈ 37.5cqw on the original 400px card) — its position
+   relative to the picture therefore never changes. */
+.hero2-monogram {
+  position: absolute;
+  left: 17%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  z-index: 10;
+  color: var(--color-ink);
+  line-height: 1;
+  pointer-events: none;
+  font-size: 37.5cqw;
+  white-space: nowrap;
+}
+
+.hero2-char {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.hero2-char-m {
+  left: 60cqw;
+  top: 0.75cqw;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+.hero2-char-amp {
+  left: 45cqw;
+  top: -12.5cqw;
+  transform: translate(-50%, -50%) scale(0.65);
+}
+.hero2-char-s {
+  left: 30cqw;
+  top: 0cqw;
+  transform: translate(-50%, -50%) scale(3);
+}
+
+/* ============================================================
+   HeroV2 couple names — shallow top-left → bottom-right diagonal.
+   مریم top-left, & centred, سعید bottom-right. The band is pinned
+   near the top of the photo, spans the full width (left edge → right
+   edge) and only ~10% of the photo height. All sizes are in vh so the
+   band stays thin and scales with the screen.
+   ============================================================ */
+.hero2-names {
+  position: absolute;
+  inset-inline: 0;
+  top: 5vh;        /* distance from the top of the photo — tunable */
+  height: 9vh;     /* the diagonal band ≈ ~10% of the photo — tunable */
+}
+.hero2-name {
+  position: absolute;
+  line-height: 1;
+  margin: 0;
+}
+.hero2-name-left {
+  left: 10;        /* مریم — top-left, flush to the left edge */
+  top: 50;
+}
+.hero2-name-center {
+  left: 0;        /* & — horizontally centred, vertically between */
+  right: 0;
+  text-align: center;
+  top: 40%;
+}
+.hero2-name-right {
+  right: 10;       /* سعید — bottom-right, flush to the right edge */
+  bottom: 50;
+}
+.hero2-amp {
+  font-family: var(--font-hero2-amp);
+}
+
+.hero2-date {
+  margin-top: 2.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  direction: rtl;
+}
+.hero2-date-part {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero2-num {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.hero2-line {
+  width: 25px;
+  height: 1px;
+  background-color: var(--color-ink);
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .hero2-card {
+    padding: 3vh 10% 6vh 5%;
+  }
+  .hero2-image {
+    margin-left: -5%;
+    width: calc(100% + 5%);
   }
 }

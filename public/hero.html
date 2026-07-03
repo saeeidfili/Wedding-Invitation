@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Maryam and Saeed</title>
+    <style>
+        /* Combined Font Imports */
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Grey+Qo&family=Kapakana:wght@300..400&family=Montserrat:wght@400;700&family=WindSong:wght@400;500&display=swap');
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e9e9e9;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .card {
+            width: 400px;
+            height: 640px;
+            background-color: #ffffff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 20px 25px 20px;
+        }
+
+        .top-title {
+            text-align: center;
+            color: #1C355E;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .image-section {
+            flex: 1;
+            position: relative;
+            background-color: #7FA9C9;
+            overflow: hidden;
+            /* Flush left */
+            margin-left: -20px;
+            width: 100%;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+            display: block;
+        }
+
+        /* ================================================== */
+        /* NAMES HAVE BEEN REMOVED (MARYAM & SAEED)           */
+        /* ================================================== */
+
+        /* ================================================== */
+        /* MONOGRAM - EXACTLY AS YOU PROVIDED (UNTOUCHED)     */
+        /* ================================================== */
+        .monogram-block {
+            position: absolute;
+            left: 10%; 
+            top: 70%; 
+            transform: translate(-50%, -50%);
+            opacity: 0.6; 
+            z-index: 10;
+            font-family: 'Grey Qo', cursive;
+            font-size: 150px;
+            color: #1C355E;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .char-m, .char-amp, .char-s {
+            position: absolute;
+            left: 0px; 
+            top: 0px;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .char-m {
+            left: 240px;
+            top: 3px;
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .char-amp {
+            left: 180px;
+            top: -50px;
+            transform: translate(-50%, -50%) scale(0.65);
+        }
+
+        .char-s {
+            left: 120px;
+            top: 0px;
+            transform: translate(-50%, -50%) scale(3);
+        }
+        /* ================================================== */
+
+        .date-section {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Bodoni Moda', serif;
+            color: #1C355E;
+        }
+
+        .date-section .label {
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .date-section .number {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0 2px;
+        }
+
+        .date-section .line {
+            width: 25px;
+            height: 1px;
+            background-color: #1C355E;
+        }
+
+        @media (max-width: 480px) {
+            .card { width: 95%; height: auto; aspect-ratio: 3 / 5; }
+            
+            /* Keep monogram untouched */
+            .monogram-block { font-size: 100px; }
+            .char-m { transform: translate(-50%, -50%) scale(1.1); }
+            .char-s { transform: translate(-50%, -50%) scale(1.1); }
+            .char-amp { transform: translate(-50%, -50%) scale(0.65); }
+            
+            .date-section { margin-top: 15px; gap: 8px; }
+            .date-section .number { font-size: 36px; }
+            .date-section .line { width: 15px; }
+            .image-section { margin-left: -5%; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="top-title">THE WEDDING OF</div>
+
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop&crop=faces&auto=format" alt="Maryam and Saeed">
+            
+            <!-- Names have been removed per your request -->
+
+            <!-- Monogram Section (Untouched) -->
+            <div class="monogram-block">
+                <span class="char-m">M</span>
+                <span class="char-amp">&amp;</span>
+                <span class="char-s">S</span>
+            </div>
+        </div>
+
+        <div class="date-section">
+            <span class="label">MAY</span>
+            <span class="line"></span>
+            <span class="number">18</span>
+            <span class="line"></span>
+            <span class="label">2025</span>
+        </div>
+    </div>
+
+</body>
+</html>

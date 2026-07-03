@@ -3,7 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { weddingData } from './wedding-data'
-import { FloralCluster, Peony, Eucalyptus } from './FloralDecorations'
+import { Flora } from './Flora'
+import { floraPlacements } from './flora-placements'
+import { T, type TextId } from './T'
 
 type TimeLeft = {
   days: number
@@ -22,11 +24,11 @@ function computeTimeLeft(target: Date): TimeLeft {
   }
 }
 
-const units: { key: keyof TimeLeft; label: string }[] = [
-  { key: 'days', label: 'روز' },
-  { key: 'hours', label: 'ساعت' },
-  { key: 'minutes', label: 'دقیقه' },
-  { key: 'seconds', label: 'ثانیه' },
+const units: { key: keyof TimeLeft; textId: TextId }[] = [
+  { key: 'days', textId: 'countdown.day' },
+  { key: 'hours', textId: 'countdown.hour' },
+  { key: 'minutes', textId: 'countdown.minute' },
+  { key: 'seconds', textId: 'countdown.second' },
 ]
 
 export function Countdown() {
@@ -54,31 +56,13 @@ export function Countdown() {
   }, [target])
 
   return (
-    <section className="relative py-24 md:py-32 px-4 overflow-hidden">
-      {/* Soft floral background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <FloralCluster
-          variant="soft"
-          className="absolute top-0 right-0 w-[280px] h-[280px] md:w-[420px] md:h-[420px] opacity-50"
-          style={{ transform: 'translate(28%, -28%) rotate(15deg)' }}
-        />
-        <FloralCluster
-          variant="soft"
-          className="absolute bottom-0 left-0 w-[280px] h-[280px] md:w-[420px] md:h-[420px] opacity-50"
-          style={{ transform: 'translate(-28%, 28%) rotate(-165deg)' }}
-        />
-        <div
-          className="absolute top-10 left-1/4 w-20 h-20 opacity-40"
-          style={{ transform: 'rotate(-15deg)' }}
-        >
-          <Peony />
-        </div>
-        <div
-          className="absolute bottom-10 right-1/4 w-24 h-24 opacity-40"
-          style={{ transform: 'rotate(25deg)' }}
-        >
-          <Eucalyptus />
-        </div>
+    <section className="relative py-24 md:py-32 px-4">
+      {/* Soft floral background — edit in flora-placements.ts */}
+      <div className="pointer-events-none absolute inset-0">
+        <Flora placement={floraPlacements.countdown.cornerTopRight} />
+        {/* <Flora placement={floraPlacements.countdown.cornerBottomLeft} />
+        <Flora placement={floraPlacements.countdown.accentTop} />
+        <Flora placement={floraPlacements.countdown.accentBottom} /> */}
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -101,22 +85,22 @@ export function Countdown() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          روزِ شروعِ ما
+          <T id="countdown.heading" className="text-ink mb-3" />
         </motion.h2>
 
         <motion.p
-          className="font-body text-ink-soft text-base md:text-lg mb-12"
+          className="text-ink-soft mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
-          {weddingData.weddingDateLabel}
+          <T id="countdown.date" />
         </motion.p>
 
         {/* Countdown grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {units.map(({ key, label }, i) => (
+          {units.map(({ key, textId }, i) => (
             <motion.div
               key={key}
               className="relative rounded-2xl bg-white/70 backdrop-blur-sm border border-rose/20 px-2 py-6 md:py-8 shadow-sm"
@@ -128,8 +112,8 @@ export function Countdown() {
               <div className="font-display text-4xl md:text-6xl text-rose tabular-nums leading-none">
                 <AnimatedDigit value={time[key]} />
               </div>
-              <div className="font-body text-ink-soft text-sm md:text-base mt-3">
-                {label}
+              <div className="text-ink-soft mt-3">
+                <T id={textId} />
               </div>
             </motion.div>
           ))}

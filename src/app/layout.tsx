@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
-import { Vazirmatn, Lalezar } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const vazirmatn = Vazirmatn({
-  subsets: ["arabic", "latin"],
-  variable: "--font-vazirmatn",
+// Two local Persian fonts. Edit per-text font/size in wedding-data.ts (`texts`).
+const nozha = localFont({
+  src: "../../fonts/Digi Nozha Regular.ttf",
+  variable: "--font-nozha",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
-const lalezar = Lalezar({
-  subsets: ["arabic", "latin"],
-  variable: "--font-lalezar",
-  weight: "400",
+const pinar = localFont({
+  src: "../../fonts/Pinar.ttf",
+  variable: "--font-pinar",
   display: "swap",
 });
 
@@ -41,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${vazirmatn.variable} ${lalezar.variable} antialiased bg-paper text-ink min-h-screen`}
+        className={`${nozha.variable} ${pinar.variable} antialiased bg-paper text-ink min-h-screen`}
       >
         {children}
         <Toaster />

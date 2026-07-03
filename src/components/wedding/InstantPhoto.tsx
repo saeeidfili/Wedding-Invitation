@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { TimelinePhoto } from './wedding-data'
+import { listTextStyle } from './T'
 
 type InstantPhotoProps = {
   photo: TimelinePhoto
@@ -63,8 +64,8 @@ export function InstantPhoto({
         />
       </div>
       <figcaption
-        className="handwritten text-center text-ink mt-3"
-        style={{ fontSize: 18, lineHeight: 1.3 }}
+        className="text-center text-ink mt-3"
+        style={listTextStyle('timeline.caption')}
       >
         {photo.caption}
       </figcaption>

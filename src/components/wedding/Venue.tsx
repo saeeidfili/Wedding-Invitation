@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import { weddingData } from './wedding-data'
-import { Eucalyptus, Peony } from './FloralDecorations'
+import { Flora } from './Flora'
+import { floraPlacements } from './flora-placements'
+import { T } from './T'
 
 type VenueProps = {
   googleMapsUrl?: string
@@ -17,22 +19,10 @@ export function Venue({
   wazeUrl = weddingData.wazeUrl,
 }: VenueProps) {
   return (
-    <section className="relative py-24 md:py-32 px-4 paper-texture overflow-hidden">
-      {/* Background floral accents */}
-      <div
-        className="absolute top-10 right-0 w-32 h-32 opacity-50 pointer-events-none"
-        style={{ transform: 'rotate(20deg)' }}
-        aria-hidden="true"
-      >
-        <Eucalyptus />
-      </div>
-      <div
-        className="absolute bottom-10 left-0 w-32 h-32 opacity-50 pointer-events-none"
-        style={{ transform: 'rotate(-160deg)' }}
-        aria-hidden="true"
-      >
-        <Eucalyptus />
-      </div>
+    <section className="relative py-24 md:py-32 px-4 bg-paper">
+      {/* Background floral accents — edit in flora-placements.ts */}
+      <Flora placement={floraPlacements.venue.bgTopRight} />
+      <Flora placement={floraPlacements.venue.bgBottomLeft} />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
@@ -54,7 +44,7 @@ export function Venue({
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          محلِ برگزاری
+          <T id="venue.heading" className="text-ink mb-4" />
         </motion.h2>
 
         <motion.div
@@ -65,29 +55,27 @@ export function Venue({
           transition={{ duration: 0.8, delay: 0.1 }}
         >
           <MapPin className="w-5 h-5 text-rose" />
-          <span className="font-body text-xl md:text-2xl text-ink">
-            {weddingData.venueName}
-          </span>
+          <T id="venue.name" className="text-ink" />
         </motion.div>
 
         <motion.p
-          className="font-body text-ink-soft text-base md:text-lg mb-3"
+          className="text-ink-soft mb-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {weddingData.venueAddress}
+          <T id="venue.address" />
         </motion.p>
 
         <motion.p
-          className="font-body text-ink-soft text-sm md:text-base max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-ink-soft max-w-xl mx-auto mb-10 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          {weddingData.venueDescription}
+          <T id="venue.description" />
         </motion.p>
 
         {/* Map buttons — each shows a single brand icon + label.
@@ -102,20 +90,53 @@ export function Venue({
           <MapButton
             href={googleMapsUrl}
             icon="/icons/google-maps.png"
-            label="گوگل مپ"
+            label={<T id="venue.btnGoogle" />}
             variant="primary"
           />
           <MapButton
             href={neshanUrl}
             icon="/icons/neshan.png"
-            label="نشان"
+            label={<T id="venue.btnNeshan" />}
             variant="sage"
           />
           <MapButton
             href={wazeUrl}
             icon="/icons/waze.png"
-            label="وِیز"
+            label={<T id="venue.btnWaze" />}
             variant="rose"
+          />
+        </motion.div>
+
+        {/* Parking map subsection */}
+        <motion.div
+          className="mt-12 flex flex-col items-center"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.div
+            className="mb-3 flex items-center justify-center gap-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="bg-rose h-px w-10" />
+            <span className="text-rose tracking-widest">
+              <T id="venue.parkingLabel" />
+            </span>
+            <span className="bg-rose h-px w-10" />
+          </motion.div>
+          <p className="text-ink-soft mb-4 text-center">
+            <T id="venue.parkingNote" />
+          </p>
+          <iframe
+            title="parking-map"
+            src={weddingData.parking.mapSrc}
+            loading="lazy"
+            allowFullScreen
+            className="aspect-[3/2] w-full max-w-md rounded-2xl border border-rose/20 shadow-sm"
           />
         </motion.div>
 
@@ -128,25 +149,15 @@ export function Venue({
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <span className="text-lg">✦</span>
-          <span className="text-sm tracking-widest font-body">منتظر دیدارتان هستیم</span>
+          <span className="text-rose tracking-widest">
+            <T id="venue.closing" />
+          </span>
           <span className="text-lg">✦</span>
         </motion.div>
 
-        {/* Peony accents */}
-        <div
-          className="absolute -top-2 -left-2 w-16 h-16 opacity-70 pointer-events-none"
-          style={{ transform: 'rotate(-25deg)' }}
-          aria-hidden="true"
-        >
-          <Peony />
-        </div>
-        <div
-          className="absolute -bottom-2 -right-2 w-16 h-16 opacity-70 pointer-events-none"
-          style={{ transform: 'rotate(155deg)' }}
-          aria-hidden="true"
-        >
-          <Peony />
-        </div>
+        {/* Card-corner accents — edit in flora-placements.ts */}
+        <Flora placement={floraPlacements.venue.cardTopLeft} />
+        <Flora placement={floraPlacements.venue.cardBottomRight} />
       </div>
     </section>
   )
@@ -164,7 +175,7 @@ const buttonVariants = {
 type MapButtonProps = {
   href: string
   icon: string
-  label: string
+  label: React.ReactNode
   variant: keyof typeof buttonVariants
 }
 

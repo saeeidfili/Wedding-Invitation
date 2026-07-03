@@ -4,7 +4,9 @@ import { motion, useMotionValue, type PanInfo } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { timelinePhotos } from './wedding-data'
 import { Hand } from 'lucide-react'
-import { Peony, Eucalyptus } from './FloralDecorations'
+import { Flora } from './Flora'
+import { floraPlacements } from './flora-placements'
+import { T } from './T'
 
 export function Gallery() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -40,22 +42,10 @@ export function Gallery() {
   }
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Floral corner accents */}
-      <div
-        className="absolute top-0 right-0 w-36 h-36 opacity-60 pointer-events-none"
-        style={{ transform: 'translate(30%, -30%) rotate(15deg)' }}
-        aria-hidden="true"
-      >
-        <Eucalyptus />
-      </div>
-      <div
-        className="absolute bottom-0 left-0 w-36 h-36 opacity-60 pointer-events-none"
-        style={{ transform: 'translate(-30%, 30%) rotate(-165deg)' }}
-        aria-hidden="true"
-      >
-        <Eucalyptus />
-      </div>
+    <section className="relative py-24 md:py-32">
+      {/* Floral corner accents — edit in flora-placements.ts */}
+      <Flora placement={floraPlacements.gallery.cornerTopRight} />
+      <Flora placement={floraPlacements.gallery.cornerBottomLeft} />
 
       <div className="text-center mb-12 px-4 relative z-10">
         <motion.div
@@ -76,17 +66,17 @@ export function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          گالریِ خاطرات
+          <T id="gallery.heading" className="text-ink mb-3" />
         </motion.h2>
         <motion.p
-          className="font-body text-ink-soft text-base md:text-lg flex items-center justify-center gap-2"
+          className="text-ink-soft flex items-center justify-center gap-2"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
         >
           <Hand className="w-4 h-4" />
-          بکشید تا ببینید
+          <T id="gallery.subtitle" />
         </motion.p>
       </div>
 
@@ -147,13 +137,8 @@ export function Gallery() {
         </motion.div>
       </motion.div>
 
-      {/* Decorative peony at the end */}
-      <div
-        className="absolute right-6 bottom-6 w-16 h-16 opacity-50 pointer-events-none"
-        aria-hidden="true"
-      >
-        <Peony />
-      </div>
+      {/* Decorative accent at the end — edit in flora-placements.ts */}
+      <Flora placement={floraPlacements.gallery.endAccent} />
     </section>
   )
 }
