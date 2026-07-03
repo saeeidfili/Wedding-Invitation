@@ -36,8 +36,8 @@ export const weddingData = {
     mixed: 'مراسم مختلط است',
   },
   declineNotice: {
-    bridePhone: '+98XXXXXXXXXX', // ← bride's family phone
-    groomPhone: '+98XXXXXXXXXX', // ← groom's family phone
+    bridePhone: '09122495459', // ← bride's family phone
+    groomPhone: '09125991435', // ← groom's family phone
     title: 'شرکت در مراسم',
     message:
       'اگر مایل به حضور در این مراسم نیستید، لطفاً با خانواده ما تماس بگیرید.',
