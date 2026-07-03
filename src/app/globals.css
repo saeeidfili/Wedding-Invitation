@@ -245,6 +245,7 @@
   inset-inline: 0;
   top: 5vh;        /* distance from the top of the photo — tunable */
   height: 9vh;     /* the diagonal band ≈ ~10% of the photo — tunable */
+  padding-inline: 6%; /* keep names from touching the photo edge */
 }
 .hero2-name {
   position: absolute;
@@ -252,8 +253,9 @@
   margin: 0;
 }
 .hero2-name-left {
-  left: 10;        /* مریم — top-left, flush to the left edge */
-  top: 50;
+  left: 0;         /* مریم — top-left */
+  top: 50%;
+  transform: translateY(-50%);
 }
 .hero2-name-center {
   left: 0;        /* & — horizontally centred, vertically between */
@@ -262,8 +264,9 @@
   top: 40%;
 }
 .hero2-name-right {
-  right: 10;       /* سعید — bottom-right, flush to the right edge */
-  bottom: 50;
+  right: 10;        /* سعید — bottom-right */
+  bottom: 40%;
+  transform: translateY(50%);
 }
 .hero2-amp {
   font-family: var(--font-hero2-amp);

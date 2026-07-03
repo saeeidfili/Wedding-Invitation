@@ -15,9 +15,7 @@ const greyQo = Grey_Qo({
   display: 'swap',
 })
 
-// The photo referenced by public/hero.html (couple portrait).
-const PHOTO =
-  'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop&crop=faces&auto=format'
+const { heroImage } = weddingData
 
 /* Deterministic pseudo-random for SSR-safe petal positions */
 function seededFloat(seed: number) {
@@ -66,7 +64,14 @@ export function HeroV2() {
 
         {/* Photo — flush left, margins on top / right / bottom */}
         <div className="hero2-image">
-          <img src={PHOTO} alt="عروس و داماد" />
+          <img
+            src={heroImage.src}
+            alt="عروس و داماد"
+            style={{
+              transform: `scale(${heroImage.scale})`,
+              transformOrigin: `${heroImage.position.x}% ${heroImage.position.y}%`,
+            }}
+          />
 
           {/* Raining petals — fall across the whole photo */}
           <div className="hero2-petals absolute inset-0 overflow-hidden pointer-events-none">
@@ -100,7 +105,7 @@ export function HeroV2() {
               monogram (left:10%/top:70%). */}
           <div className="hero2-names z-20">
             <motion.h1
-              className="hero2-name hero2-name-left text-ink"
+              className="hero2-name hero2-name-left text-white/90"
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
@@ -117,7 +122,7 @@ export function HeroV2() {
               &
             </motion.span>
             <motion.h1
-              className="hero2-name hero2-name-right text-ink"
+              className="hero2-name hero2-name-right text-white/90"
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}

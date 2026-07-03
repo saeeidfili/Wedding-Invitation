@@ -19,7 +19,7 @@ export const weddingData = {
   venueName: 'تالار عرفان',
   venueAddress: 'تهرانپارسُ خیابان جشنواره میدان اشراق',
   venueDescription:
-    'در قلب باغی تاریخی، زیر سایه درختان کهن و کنار چشمه‌های جاری، زندگی مشترکمان را آغاز می‌کنیم. حضور شما گرامی‌ترین هدیه ماست.',
+    '',
   googleMapsUrl: 'https://www.google.com/maps/place/talare+erfan/@35.7321307,51.546145,17z/data=!3m1!4b1!4m6!3m5!1s0x3f8e1d17b0dfd4b1:0x2b3d61b94cb9259a!8m2!3d35.7321307!4d51.546145!16s%2Fg%2F1pv1y5x30?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D',
   neshanUrl: 'https://nshn.ir/_bv_ovNxzQu7',
   wazeUrl:
@@ -36,11 +36,16 @@ export const weddingData = {
     mixed: 'مراسم مختلط است',
   },
   declineNotice: {
-    // ← Put the real phone number here (include country code, e.g. +98...).
-    phone: '+98XXXXXXXXXX',
+    bridePhone: '+98XXXXXXXXXX', // ← bride's family phone
+    groomPhone: '+98XXXXXXXXXX', // ← groom's family phone
     title: 'شرکت در مراسم',
     message:
-      'اگر مایل به حضور در این مراسم نیستید، خوشحال می‌شویم با تماس، ما را در جریان بگذارید.',
+      'اگر مایل به حضور در این مراسم نیستید، لطفاً با خانواده ما تماس بگیرید.',
+  },
+  heroImage: {
+    src: '/hero/2.png',
+    scale: 1.3,
+    position: { x: 50, y: 0 },
   },
 }
 
@@ -74,7 +79,7 @@ export const timelinePhotos: TimelinePhoto[] = [
   {
     id: 4,
     src: '/timeline/4.jpeg',
-    caption: 'گل‌های بهاری',
+    caption: 'ساحل دل',
   },
   {
     id: 5,
@@ -99,8 +104,25 @@ export const timelinePhotos: TimelinePhoto[] = [
   {
     id: 9,
     src: '/timeline/9.jpeg',
+    caption: 'شام نمکی!',
+  },
+  {
+    id: 10,
+    src: '/timeline/10.jpeg',
     caption: 'آغوش گرم',
+    milestone:"بله برون"
+  },
+  {
+    id: 11,
+    src: '/timeline/12.jpeg',
+    caption: 'بالاخره «بله» گفت... 💍🤍',
+  },
+  {
+    id: 12,
+    src: '/timeline/11.jpeg',
+    caption: '☀️Sunshine',
   }
+  
 ]
 
 // ============================================================
@@ -177,6 +199,8 @@ export const texts = {
   // Decline popup
   'decline.title': { text: weddingData.declineNotice.title, font: 'nozha', size: 24 },
   'decline.message': { text: weddingData.declineNotice.message, font: 'pinar', size: 18 },
+  'decline.brideLabel': { text: 'خانواده عروس', font: 'pinar', size: 14 },
+  'decline.groomLabel': { text: 'خانواده داماد', font: 'pinar', size: 14 },
   'decline.call': { text: 'تماس', font: 'pinar', size: 18 },
   'decline.dismiss': { text: 'متوجه شدم', font: 'pinar', size: 14 },
   'decline.neverShow': { text: 'دیگر نمایش نده', font: 'pinar', size: 14 },
