@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   keywords: ["عروسی", "دعوتنامه", "wedding", "invitation", "Persian"],
   authors: [{ name: "Wedding Invitation" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/icons/Vector.png",
   },
   openGraph: {
     title: "دعوت به جشن عقد",

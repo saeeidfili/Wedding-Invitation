@@ -67,11 +67,6 @@ export const timelinePhotos: TimelinePhoto[] = [
     milestone: 'آشنایی',
   },
   {
-    id: 3,
-    src: '/timeline/3.jpeg',
-    caption: 'لبخند تو',
-  },
-  {
     id: 5,
     src: '/timeline/5.jpeg',
     caption: 'هم‌سفر',
@@ -90,11 +85,6 @@ export const timelinePhotos: TimelinePhoto[] = [
     id: 2,
     src: '/timeline/2.jpeg',
     caption: 'باغچهٔ دل',
-  },
-  {
-    id: 8,
-    src: '/timeline/8.jpeg',
-    caption: 'چشم‌انداز',
   },
   {
     id: 9,
@@ -141,7 +131,7 @@ export const texts = {
   // Timeline
   'timeline.heading': { text: 'داستانِ ما', font: 'nozha', size: 48 },
   'timeline.subtitle': {
-    text: 'خاطراتی که ما را به این روز رساند — یکی‌یکی ورق بزنید',
+    text: 'خاطراتی که ما را به این روز رساند',
     font: 'pinar',
     size: 18,
   },
@@ -173,7 +163,7 @@ export const texts = {
 
   // Gallery
   'gallery.heading': { text: 'گالریِ خاطرات', font: 'nozha', size: 48 },
-  'gallery.subtitle': { text: 'بکشید تا ببینید', font: 'pinar', size: 18 },
+  'gallery.subtitle': { text: '', font: 'pinar', size: 18 },
 
   // Footer
   'footer.message': { text: weddingData.footerMessage, font: 'nozha', size: 36 },

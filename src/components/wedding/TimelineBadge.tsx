@@ -71,6 +71,8 @@ export function TimelineBadge() {
             fontSize={texts['badge.title'].size}
             style={{
               fill: 'var(--color-ink-soft)',
+              direction: 'rtl',
+              unicodeBidi: 'isolate',
               fontFamily:
                 texts['badge.title'].font === 'nozha'
                   ? 'var(--font-nozha), serif'
