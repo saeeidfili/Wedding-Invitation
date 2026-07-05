@@ -17,7 +17,7 @@ export const weddingData = {
     { time: '۹:۰۰', label: 'شام' },
   ],
   venueName: 'تالار عرفان',
-  venueAddress: 'تهرانپارسُ خیابان جشنواره میدان اشراق',
+  venueAddress: 'تهرانپارس خیابان جشنواره میدان اشراق',
   venueDescription:
     '',
   googleMapsUrl: 'https://www.google.com/maps/place/talare+erfan/@35.7321307,51.546145,17z/data=!3m1!4b1!4m6!3m5!1s0x3f8e1d17b0dfd4b1:0x2b3d61b94cb9259a!8m2!3d35.7321307!4d51.546145!16s%2Fg%2F1pv1y5x30?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D',
