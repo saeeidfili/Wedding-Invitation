@@ -23,16 +23,16 @@ const nastaliq = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "دعوت به عروسی | Wedding Invitation",
+  title: "دعوت به جشن عقد | Wedding Invitation",
   description:
-    "دو قلب، یک سرنوشت — دعوتنامه عروسی با الهام از باغ‌های ایرانی و خاطرات قدیمی",
+    "دو قلب، یک سرنوشت — دعوتنامه جشن عقد",
   keywords: ["عروسی", "دعوتنامه", "wedding", "invitation", "Persian"],
   authors: [{ name: "Wedding Invitation" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "دعوت به عروسی",
+    title: "دعوت به جشن عقد",
     description: "دو قلب، یک سرنوشت",
     type: "website",
   },

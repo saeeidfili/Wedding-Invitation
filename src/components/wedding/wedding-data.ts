@@ -141,7 +141,7 @@ export const texts = {
   // Timeline
   'timeline.heading': { text: 'داستانِ ما', font: 'nozha', size: 48 },
   'timeline.subtitle': {
-    text: 'هفده قاب از خاطراتی که ما را به این روز رساند — یکی‌یکی ورق بزنید',
+    text: 'خاطراتی که ما را به این روز رساند — یکی‌یکی ورق بزنید',
     font: 'pinar',
     size: 18,
   },
