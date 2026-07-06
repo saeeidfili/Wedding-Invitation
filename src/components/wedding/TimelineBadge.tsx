@@ -1,4 +1,5 @@
-import { weddingData, texts } from './wedding-data'
+import { weddingData } from './wedding-data'
+import { BADGE_TITLE_OUTLINE_D } from './badge-title-outline'
 import { Monogram } from './Monogram'
 import { listTextStyle } from './T'
 
@@ -9,10 +10,11 @@ import { listTextStyle } from './T'
  * title + floral; an HTML overlay (sized in cqw) holds the monogram and
  * schedule so the whole badge scales proportionally.
  *
- * NOTE: the arc path runs left→right over the top so the glyphs render
- * upright (a right→left path flips them upside down). The browser still
- * shapes the Persian text RTL. If it ever renders upside down, flip the
- * arc direction in the <defs> path below.
+ * NOTE: the curved Persian title is baked as outlined vector paths (see
+ * badge-title-outline.ts) because WebKit cannot shape RTL text on an SVG
+ * textPath — it scrambled on every iOS browser. Reposition the title via
+ * the nested <svg> x/y below; to change the wording, re-export outlines
+ * from a design tool and regenerate that module.
  */
 export function TimelineBadge() {
   return (
@@ -31,15 +33,6 @@ export function TimelineBadge() {
           className="absolute inset-0 h-full w-full"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <defs>
-            {/* Top-arch arc the title follows. Runs left→right over the top
-                so the glyphs render upright (right→left flips them upside down).
-                The browser still shapes the Persian text RTL. The two y-values
-                (82) set the arc height — increase to move the words DOWN,
-                decrease to move them UP. */}
-            <path id="badgeTopArc" d="M 36 90 A 95 95 0 0 1 204 90" fill="none" />
-          </defs>
-
           {/* Outer + inner capsule outlines (true semicircular caps) */}
           <rect
             x="1"
@@ -66,23 +59,19 @@ export function TimelineBadge() {
             style={{ stroke: 'var(--color-border)' }}
           />
 
-          {/* Curved Persian title */}
-          <text
-            fontSize={texts['badge.title'].size}
-            style={{
-              fill: 'var(--color-ink-soft)',
-              direction: 'rtl',
-              unicodeBidi: 'isolate',
-              fontFamily:
-                texts['badge.title'].font === 'nozha'
-                  ? 'var(--font-nozha), serif'
-                  : 'var(--font-pinar), serif',
-            }}
+          {/* Curved Persian title — outlined vector paths. WebKit can't shape
+              RTL on an SVG textPath, so the title is baked as geometry and
+              positioned via the nested <svg> x/y below. */}
+          <svg
+            x="68.5"
+            y="24"
+            width="103"
+            height="30"
+            viewBox="0 0 103 30"
+            overflow="visible"
           >
-            <textPath href="#badgeTopArc" startOffset="50%" textAnchor="middle">
-              {texts['badge.title'].text}
-            </textPath>
-          </text>
+            <path d={BADGE_TITLE_OUTLINE_D} fill="var(--color-ink-soft)" />
+          </svg>
 
           {/* Minimal monochromatic floral above the top arch */}
           <g
