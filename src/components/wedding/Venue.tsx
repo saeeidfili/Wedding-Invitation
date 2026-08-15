@@ -107,7 +107,7 @@ export function Venue({
           />
         </motion.div>
 
-        {/* Parking map subsection */}
+        {/* Parking map subsection
         <motion.div
           className="mt-12 flex flex-col items-center"
           initial={{ opacity: 0, y: 24 }}
@@ -138,7 +138,7 @@ export function Venue({
             allowFullScreen
             className="aspect-[3/2] w-full max-w-md rounded-2xl border border-rose/20 shadow-sm"
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Decorative peony accent below buttons */}
         <motion.div
